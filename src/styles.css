@@ -7,12 +7,12 @@
   --n600: #636363;
   --n700: #4a4a4a;
 
-  --primary: #7759b8;          /* primary */
-  --secondary: #d0bcff;        /* secondary */
-  --la-l: #f4ebfb;             /* light accent / l */
-  --la-d: #dcbdff;             /* light accent / d */
-  --da-l: #463c64;             /* dark accent / l */
-  --da-d: #322a4c;             /* dark accent / d */
+  --primary: #6457cf;          /* primary */
+  --secondary: #c4c2ff;        /* secondary */
+  --la-l: #eeedfc;             /* light accent / l */
+  --la-d: #cfcbff;             /* light accent / d */
+  --da-l: #3c3a6b;             /* dark accent / l */
+  --da-d: #2b2a52;             /* dark accent / d */
   --teal: #43aec4;             /* new teal */
   --student: #5084a4;          /* student / primary / light */
   --tert-l: #d6d7d9;           /* tertiary / light */
@@ -290,10 +290,10 @@ img {
   pointer-events: none;
   background:
     radial-gradient(38% 22% at 80% 9%, rgba(255, 214, 188, 0.55), rgba(255, 214, 188, 0) 100%),
-    radial-gradient(42% 26% at 64% 22%, rgba(208, 188, 255, 0.6), rgba(208, 188, 255, 0) 100%),
+    radial-gradient(42% 26% at 64% 22%, rgba(196, 194, 255, 0.6), rgba(196, 194, 255, 0) 100%),
     radial-gradient(30% 22% at 96% 34%, rgba(133, 191, 206, 0.38), rgba(133, 191, 206, 0) 100%),
-    radial-gradient(40% 20% at 12% 48%, rgba(220, 189, 255, 0.4), rgba(220, 189, 255, 0) 100%),
-    radial-gradient(46% 22% at 72% 62%, rgba(208, 188, 255, 0.34), rgba(208, 188, 255, 0) 100%),
+    radial-gradient(40% 20% at 12% 48%, rgba(207, 203, 255, 0.4), rgba(207, 203, 255, 0) 100%),
+    radial-gradient(46% 22% at 72% 62%, rgba(196, 194, 255, 0.34), rgba(196, 194, 255, 0) 100%),
     radial-gradient(40% 18% at 30% 78%, rgba(133, 191, 206, 0.24), rgba(133, 191, 206, 0) 100%);
   /* fade in out of the hero (top) and fade out gently at the bottom – no hard edges */
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent 200px, #000 620px, #000 72%, transparent 100%);
@@ -303,7 +303,7 @@ img {
 /* ───── Hero (track): ball with the user icon runs the glass tubes, then the camera flies into it ───── */
 .ht-sticky {
   background:
-    radial-gradient(40% 36% at 78% 18%, rgba(208, 188, 255, 0.42), rgba(208, 188, 255, 0) 100%),
+    radial-gradient(40% 36% at 78% 18%, rgba(196, 194, 255, 0.42), rgba(196, 194, 255, 0) 100%),
     radial-gradient(34% 30% at 92% 70%, rgba(133, 191, 206, 0.3), rgba(133, 191, 206, 0) 100%),
     radial-gradient(40% 40% at 18% 50%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 100%),
     #f5f5f8;
@@ -315,7 +315,7 @@ img {
   min-height: 640px;
   overflow: hidden;
   background:
-    radial-gradient(40% 40% at 76% 22%, rgba(208, 188, 255, 0.35), rgba(208, 188, 255, 0) 100%),
+    radial-gradient(40% 40% at 76% 22%, rgba(196, 194, 255, 0.35), rgba(196, 194, 255, 0) 100%),
     radial-gradient(36% 36% at 90% 78%, rgba(133, 191, 206, 0.28), rgba(133, 191, 206, 0) 100%),
     radial-gradient(42% 46% at 16% 46%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 100%),
     linear-gradient(180deg, #f3f4f8 0%, #eef0f5 62%, #ffffff 100%);
@@ -597,7 +597,7 @@ img {
   flex: none;
 }
 .glass-nav-item.is-active {
-  background: rgba(119, 89, 184, 0.13);
+  background: rgba(100, 87, 207, 0.13);
   color: var(--primary);
   font-weight: 500;
 }
@@ -640,8 +640,8 @@ img {
   box-shadow: 0 10px 24px -12px rgba(70, 60, 100, 0.3);
 }
 .glass-row.is-active {
-  background: linear-gradient(120deg, rgba(208, 188, 255, 0.42), rgba(244, 235, 251, 0.6));
-  border-color: rgba(119, 89, 184, 0.18);
+  background: linear-gradient(120deg, rgba(196, 194, 255, 0.42), rgba(238, 237, 252, 0.6));
+  border-color: rgba(100, 87, 207, 0.18);
 }
 .glass-row-icon {
   display: grid;
@@ -683,8 +683,8 @@ img {
   width: 56px;
   height: 52px;
   border-radius: 50% 50% 44% 44%;
-  background: radial-gradient(circle at 35% 30%, #a58ae0, #7759b8 60%, #5e43a0);
-  box-shadow: 0 6px 12px -4px rgba(119, 89, 184, 0.5);
+  background: radial-gradient(circle at 35% 30%, #a58ae0, #6457cf 60%, #5e43a0);
+  box-shadow: 0 6px 12px -4px rgba(100, 87, 207, 0.5);
 }
 .mini-blob::before {
   content: '';
@@ -729,7 +729,7 @@ img {
 .glass-under i {
   height: 150px;
   border-radius: 22px;
-  background: linear-gradient(135deg, rgba(208, 188, 255, 0.7), rgba(133, 191, 206, 0.6));
+  background: linear-gradient(135deg, rgba(196, 194, 255, 0.7), rgba(133, 191, 206, 0.6));
 }
 
 /* ───── Hero: Placement Command Center (CSS 3D) ───── */
@@ -972,7 +972,7 @@ img {
   box-shadow: 0 8px 18px -8px rgba(30, 20, 90, 0.5);
 }
 .cc-blob {
-  --c: #7759b8;
+  --c: #6457cf;
   position: relative;
   width: 48px;
   height: 44px;
@@ -1224,7 +1224,7 @@ img {
 }
 .nav-home:hover,
 .nav-link:hover {
-  background: rgba(119, 89, 184, 0.08);
+  background: rgba(100, 87, 207, 0.08);
   color: var(--n700);
 }
 .nav-link.is-active {
@@ -1286,7 +1286,7 @@ img {
   transition: height 0.3s ease, background 0.3s ease, transform 0.2s;
 }
 .nav-chap.done::before {
-  background: rgba(119, 89, 184, 0.45);
+  background: rgba(100, 87, 207, 0.45);
 }
 .nav-chap.on::before {
   height: 18px;
@@ -1296,7 +1296,7 @@ img {
   color: var(--primary);
 }
 .nav-chap:hover {
-  background: rgba(119, 89, 184, 0.08);
+  background: rgba(100, 87, 207, 0.08);
 }
 .nav-chap:hover::before {
   background: var(--primary);
@@ -1346,7 +1346,7 @@ img {
   background: #4d4270;
   box-shadow:
     0 40px 60px -30px rgba(10, 5, 30, 0.75),
-    0 0 0 1px rgba(220, 189, 255, 0.25);
+    0 0 0 1px rgba(207, 203, 255, 0.25);
   z-index: 1;
 }
 /* parallax: art floats more than the text, so the card feels layered */
@@ -1397,7 +1397,7 @@ img {
   box-shadow:
     0 14px 34px -14px rgba(90, 70, 160, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -8px 18px -12px rgba(119, 89, 184, 0.25);
+    inset 0 -8px 18px -12px rgba(100, 87, 207, 0.25);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   backdrop-filter: blur(14px) saturate(160%);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -1407,7 +1407,7 @@ img {
   box-shadow:
     0 20px 40px -14px rgba(90, 70, 160, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -8px 18px -12px rgba(119, 89, 184, 0.3);
+    inset 0 -8px 18px -12px rgba(100, 87, 207, 0.3);
 }
 .metric-chip {
   display: flex;
@@ -1417,8 +1417,8 @@ img {
   padding: 20px 10px;
   border-radius: 40px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(244, 238, 255, 0.75));
-  border: 1px solid rgba(208, 188, 255, 0.9);
-  box-shadow: 0 4px 12px -4px rgba(119, 89, 184, 0.3), inset 0 1px 0 #fff;
+  border: 1px solid rgba(196, 194, 255, 0.9);
+  box-shadow: 0 4px 12px -4px rgba(100, 87, 207, 0.3), inset 0 1px 0 #fff;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.6909px;
@@ -1450,7 +1450,7 @@ img {
 }
 .insight.on {
   transform: translateY(-4px);
-  box-shadow: 0 22px 40px -26px rgba(119, 89, 184, 0.55);
+  box-shadow: 0 22px 40px -26px rgba(100, 87, 207, 0.55);
 }
 
 /* scroll-swept marker highlight */
@@ -1768,7 +1768,7 @@ img {
 
 /* ───────────── Team: user testing (glass cards + interactive charts) ───────────── */
 .ut-frame {
-  background: linear-gradient(180deg, #fff 0%, #faf8fe 40%, #fff 100%);
+  background: linear-gradient(180deg, #fff 0%, #f8f8fe 40%, #fff 100%);
 }
 .ut-glow i {
   position: absolute;
@@ -1830,7 +1830,7 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow:
     0 24px 50px -28px rgba(70, 50, 140, 0.35),
-    0 0 0 1px rgba(119, 89, 184, 0.08),
+    0 0 0 1px rgba(100, 87, 207, 0.08),
     inset 0 1px 0 #fff;
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   backdrop-filter: blur(18px) saturate(160%);
@@ -2032,7 +2032,7 @@ img {
   stroke: #ece9f3;
 }
 .ut-band {
-  fill: rgba(119, 89, 184, 0.1);
+  fill: rgba(100, 87, 207, 0.1);
   opacity: 0;
   transition: opacity 0.8s ease 1s;
 }
@@ -2110,7 +2110,7 @@ img {
   background: rgba(255, 255, 255, 0.92);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  box-shadow: 0 12px 30px -10px rgba(60, 40, 120, 0.35), 0 0 0 1px rgba(119, 89, 184, 0.15);
+  box-shadow: 0 12px 30px -10px rgba(60, 40, 120, 0.35), 0 0 0 1px rgba(100, 87, 207, 0.15);
   font-size: 14px;
   line-height: 1.35;
   pointer-events: none;
@@ -2213,7 +2213,7 @@ img {
   margin-top: 10px;
   padding: 12px 14px;
   border-radius: 14px;
-  background: rgba(119, 89, 184, 0.07);
+  background: rgba(100, 87, 207, 0.07);
   font-size: 14px;
   line-height: 1.4;
 }
@@ -2354,7 +2354,7 @@ img {
 /* ───────────── Team: V1 → V2 ───────────── */
 .tv2-frame {
   padding: 80px 0 120px;
-  background: linear-gradient(180deg, #fff 0%, #fbf9ff 50%, #fff 100%);
+  background: linear-gradient(180deg, #fff 0%, #f9f9ff 50%, #fff 100%);
 }
 .tv2 {
   width: 1452px;
@@ -2387,7 +2387,7 @@ img {
   padding: 0 36px;
   border-radius: 44px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(244, 238, 255, 0.75));
-  border: 1px solid rgba(208, 188, 255, 0.8);
+  border: 1px solid rgba(196, 194, 255, 0.8);
   box-shadow: 0 18px 40px -26px rgba(90, 70, 160, 0.45), inset 0 1px 0 #fff;
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -2412,7 +2412,7 @@ img {
   flex: none;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 24px 50px -30px rgba(50, 30, 110, 0.5), 0 0 0 1px rgba(119, 89, 184, 0.12);
+  box-shadow: 0 24px 50px -30px rgba(50, 30, 110, 0.5), 0 0 0 1px rgba(100, 87, 207, 0.12);
 }
 .tv2-shot img {
   display: block;
@@ -2421,9 +2421,9 @@ img {
 }
 .tv2-spot {
   position: absolute;
-  border: 2px dashed rgba(119, 89, 184, 0.75);
+  border: 2px dashed rgba(100, 87, 207, 0.75);
   border-radius: 12px;
-  background: rgba(208, 188, 255, 0.12);
+  background: rgba(196, 194, 255, 0.12);
   cursor: pointer;
   transition: background 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
@@ -2440,13 +2440,13 @@ img {
   color: #fff;
   font-size: 15px;
   font-weight: 600;
-  box-shadow: 0 4px 12px -2px rgba(119, 89, 184, 0.6);
+  box-shadow: 0 4px 12px -2px rgba(100, 87, 207, 0.6);
 }
 .tv2-spot.hot {
   border-style: solid;
   border-color: var(--primary);
-  background: rgba(208, 188, 255, 0.28);
-  box-shadow: 0 0 0 6px rgba(208, 188, 255, 0.35);
+  background: rgba(196, 194, 255, 0.28);
+  box-shadow: 0 0 0 6px rgba(196, 194, 255, 0.35);
 }
 .tv2-gmail {
   flex: none;
@@ -2466,7 +2466,7 @@ img {
   max-width: 560px;
   padding: 14px 20px 14px 14px;
   border-radius: 20px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(244, 235, 251, 0.7));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(238, 237, 252, 0.7));
   border: 1px solid #fff;
   box-shadow: 0 12px 30px -18px rgba(70, 50, 140, 0.45);
   font-size: 17px;
@@ -2500,7 +2500,7 @@ img {
   height: 18px;
   border-radius: 9px;
   background: linear-gradient(90deg, rgba(244, 238, 255, 0.9), rgba(220, 210, 255, 0.6));
-  border: 1px solid rgba(208, 188, 255, 0.7);
+  border: 1px solid rgba(196, 194, 255, 0.7);
 }
 .tv2-rule em {
   position: absolute;
@@ -2591,7 +2591,7 @@ img {
 }
 .journeys button {
   padding: 12px 22px;
-  border: 1px solid rgba(208, 188, 255, 0.9);
+  border: 1px solid rgba(196, 194, 255, 0.9);
   border-radius: 999px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(244, 238, 255, 0.7));
   font: 500 17px 'DM Sans', sans-serif;
@@ -2807,8 +2807,8 @@ img {
   height: 60px;
   border-radius: 50%;
   /* flat, the exact colour of the dark theme – so the end of the blow-up and the next section meet without a seam */
-  background: #1c1430;
-  box-shadow: 0 0 40px rgba(119, 89, 184, 0.55);
+  background: #16152f;
+  box-shadow: 0 0 40px rgba(100, 87, 207, 0.55);
   transform: translate(-50%, -50%) scale(0.15);
   will-change: transform;
 }
@@ -2823,10 +2823,10 @@ img {
 
 /* ───── dark theme (expert review → end of the page) ───── */
 .dark-zone {
-  --dz-bg: #1c1430;
+  --dz-bg: #16152f;
   --dz-ink: #ece8f7;
   --dz-soft: #b9b0d4;
-  --dz-accent: #c9b6ff;
+  --dz-accent: #bcbcff;
   background: var(--dz-bg);
   color: var(--dz-ink);
 }
@@ -2835,7 +2835,7 @@ img {
 }
 .dark-zone .tv2-frame {
   background:
-    radial-gradient(40% 30% at 85% 20%, rgba(119, 89, 184, 0.28), transparent 70%),
+    radial-gradient(40% 30% at 85% 20%, rgba(100, 87, 207, 0.28), transparent 70%),
     radial-gradient(36% 30% at 10% 80%, rgba(67, 174, 196, 0.12), transparent 70%),
     var(--dz-bg);
 }
@@ -2877,8 +2877,8 @@ img {
   box-shadow: none;
 }
 .dark-zone .journeys button.on {
-  background: #8f6fe0;
-  border-color: #8f6fe0;
+  background: #7a72e8;
+  border-color: #7a72e8;
   color: #fff;
 }
 .dark-zone .journey-steps li {
@@ -2910,7 +2910,7 @@ img {
   color: var(--dz-soft);
 }
 .dark-zone .next-ico {
-  background: #8f6fe0;
+  background: #7a72e8;
 }
 
 /* ───── student → team hand-off at the end of the student page ───── */
@@ -2921,7 +2921,7 @@ img {
   min-height: 80vh;
   padding: 80px 24px 120px;
   overflow: hidden;
-  background: linear-gradient(180deg, #ffffff 0%, #f6f2ff 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f3f3ff 100%);
   text-align: center;
   font-family: 'DM Sans', sans-serif;
 }
@@ -2936,7 +2936,7 @@ img {
   max-height: 900px;
   translate: -50% -50%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(119, 89, 184, 0.22), transparent 65%);
+  background: radial-gradient(circle, rgba(100, 87, 207, 0.22), transparent 65%);
   pointer-events: none;
 }
 .next-up small {
@@ -2974,12 +2974,12 @@ img {
   font-size: 19px;
   font-weight: 500;
   text-decoration: none;
-  box-shadow: 0 18px 40px -16px rgba(119, 89, 184, 0.8);
+  box-shadow: 0 18px 40px -16px rgba(100, 87, 207, 0.8);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .next-up a:hover {
   transform: translateY(-3px);
-  box-shadow: 0 24px 50px -16px rgba(119, 89, 184, 0.9);
+  box-shadow: 0 24px 50px -16px rgba(100, 87, 207, 0.9);
 }
 .next-up a:focus-visible {
   outline: 3px solid var(--secondary);
@@ -3009,7 +3009,7 @@ img {
   border-radius: 28px;
   background: linear-gradient(140deg, rgba(255, 255, 255, 0.85), rgba(244, 238, 255, 0.6));
   border: 1px solid #fff;
-  box-shadow: 0 26px 50px -30px rgba(70, 50, 140, 0.45), 0 0 0 1px rgba(119, 89, 184, 0.08), inset 0 1px 0 #fff;
+  box-shadow: 0 26px 50px -30px rgba(70, 50, 140, 0.45), 0 0 0 1px rgba(100, 87, 207, 0.08), inset 0 1px 0 #fff;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   transition: transform 0.3s ease;
@@ -3025,7 +3025,7 @@ img {
   border-radius: 16px;
   background: var(--primary);
   color: #fff;
-  box-shadow: 0 10px 20px -8px rgba(119, 89, 184, 0.7);
+  box-shadow: 0 10px 20px -8px rgba(100, 87, 207, 0.7);
 }
 .next-card h4 {
   margin: 22px 0 10px;
@@ -3063,8 +3063,8 @@ img {
 }
 .pv-ring.hot,
 .pv-bar.hot {
-  background: rgba(208, 188, 255, 0.18);
-  box-shadow: 0 0 0 3px var(--primary), 0 0 24px rgba(119, 89, 184, 0.45);
+  background: rgba(196, 194, 255, 0.18);
+  box-shadow: 0 0 0 3px var(--primary), 0 0 24px rgba(100, 87, 207, 0.45);
 }
 .pv-tip {
   position: absolute;
@@ -3077,7 +3077,7 @@ img {
   padding: 10px 14px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 10px 26px -8px rgba(40, 20, 90, 0.45), 0 0 0 1px rgba(119, 89, 184, 0.2);
+  box-shadow: 0 10px 26px -8px rgba(40, 20, 90, 0.45), 0 0 0 1px rgba(100, 87, 207, 0.2);
   font: 400 15px/1.3 'DM Sans', sans-serif;
   color: var(--n700);
   white-space: nowrap;

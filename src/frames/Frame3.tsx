@@ -377,7 +377,7 @@ function KeyInsights() {
             <T l={150} t={0} w={310} s={24} wt={500}>Key Insights</T>
             {INSIGHTS.map((c, i) => {
               const on = i < lit
-              const bg = `linear-gradient(90deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.7) 100%), linear-gradient(${c.angle}deg, rgb(244,235,251) ${c.stops[0]}%, rgb(220,189,255) ${c.stops[1]}%, rgba(220,189,255,0.4) ${c.stops[2]}%)`
+              const bg = `linear-gradient(90deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.7) 100%), linear-gradient(${c.angle}deg, rgb(238, 237, 252) ${c.stops[0]}%, rgb(207, 203, 255) ${c.stops[1]}%, rgba(207, 203, 255,0.4) ${c.stops[2]}%)`
               return (
                 <div key={i} className={`card insight${on ? ' on' : ''}`} style={{ left: c.l, top: c.t, width: c.w, height: 206, backgroundImage: bg }}>
                   <T l={c.tl} t={65} w={c.tw} s={20} wt={400} c="#a3a3a8" center pw={c.pw}>{c.body(on)}</T>
@@ -536,7 +536,7 @@ function Rest({ part }: { part: 'a' | 'b' }) {
           <Prototype l={53} t={964} w={1329} h={587} steps={DIALOGUE_STEPS} intro="My Companies" label="Prototype: updating dialogue with a company" />
           <Prototype l={53} t={1724} w={1329} h={587} steps={RECORDS_STEPS} intro="All Companies" label="Prototype: updating company records" />
           <Prototype l={53} t={2484} w={1329} h={587} steps={RESUME_STEPS} intro="Resume verification" label="Prototype: verifying a resume" />
-          <div className="a" style={{ inset: 0, borderRadius: 'inherit', pointerEvents: 'none', boxShadow: 'inset -1px -1px 4px 0 rgba(220,189,255,0.4), inset 2px 4px 10px 5px rgba(0,0,0,0.13)' }} />
+          <div className="a" style={{ inset: 0, borderRadius: 'inherit', pointerEvents: 'none', boxShadow: 'inset -1px -1px 4px 0 rgba(207, 203, 255,0.4), inset 2px 4px 10px 5px rgba(0,0,0,0.13)' }} />
         </div>
           </>
         )}

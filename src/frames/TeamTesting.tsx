@@ -7,7 +7,7 @@ import { Chapter } from '../ui'
  * and a bar graph (legacy vs V1 time) – all hover-interactive, animated in on scroll.
  */
 
-const VIOLET = '#7759b8'
+const VIOLET = '#6457cf'
 const TEAL = '#43aec4'
 const CORAL = '#e0784a'
 const GREY = '#a3a6ad'

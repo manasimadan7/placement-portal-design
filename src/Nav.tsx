@@ -3,7 +3,7 @@ import { asset } from './ui'
 
 const LINKS = [
   { route: 'student', label: 'Student', dot: '#43aec4' },
-  { route: 'placement-team', label: 'Placement Team', dot: '#7759b8' },
+  { route: 'placement-team', label: 'Placement Team', dot: '#6457cf' },
   { route: 'hiring-manager', label: 'Hiring Manager', dot: '#999eda' },
 ] as const
 
