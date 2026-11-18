@@ -2648,6 +2648,10 @@ img {
   text-underline-offset: 4px;
   cursor: pointer;
 }
+.journey-open {
+  display: inline-block;
+  margin-left: 24px;
+}
 .phone-device {
   position: relative;
   flex: none;

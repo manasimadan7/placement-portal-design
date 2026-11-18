@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Placement Portal · IIT Bombay — Interview Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --ink:#1a1a1a;
+  --body:#636363;
+  --mute:#80828d;
+  --nav:#4a4a4a;
+  --line:#e8eaf0;
+  --soft:#f6f6f8;
+  --teal:#43aec4;
+  --teal-tint:rgba(104,204,229,.12);
+  --teal-strong:#2d8ea1;
+  --purple:#6457cf;
+  --purple-tint:rgba(100,87,207,.10);
+  --warn:#d9534f;
+  --warn-tint:#fde8e8;
+  --ok:#2f9e6e;
+  --ok-tint:#e3f5ec;
+  --accent:var(--teal);
+  --accent-tint:var(--teal-tint);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0b0d14;overflow:hidden;font-family:"DM Sans",system-ui,-apple-system,sans-serif;color:var(--ink);letter-spacing:-.023em}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{width:1280px;height:720px;position:relative;transform-origin:center center;flex:none}
+.slide{position:absolute;inset:0;background:var(--bg);padding:56px 72px 48px;opacity:0;visibility:hidden;transition:opacity .2s;overflow:hidden}
+.slide.on{opacity:1;visibility:visible}
+.slide.team{--accent:var(--purple);--accent-tint:var(--purple-tint)}
+.kicker{font-size:14px;font-weight:500;color:var(--nav);display:flex;gap:10px;align-items:center}
+.kicker .sq{width:9px;height:9px;background:var(--accent);border-radius:1px}
+h1{font-family:"DM Sans";font-weight:500;font-size:40px;line-height:1.15;color:var(--accent);letter-spacing:-.023em;margin-top:14px;max-width:1050px}
+h1.ink{color:var(--ink)}
+h2{font-family:"DM Sans";font-weight:500;font-size:24px;line-height:1.2;color:var(--accent);letter-spacing:-.023em}
+h3{font-family:"DM Sans";font-weight:500;font-size:16px;color:var(--ink)}
+p.lead{font-size:20px;font-weight:300;line-height:1.3;color:var(--body);margin-top:16px;max-width:960px;letter-spacing:-.023em}
+p.body{font-size:16px;font-weight:300;line-height:1.25;color:var(--body);letter-spacing:-.023em}
+.small{font-size:14px;font-weight:300;color:var(--mute)}
+.scn{display:grid;grid-template-columns:36px 1fr;gap:16px;margin-top:22px;max-width:1080px}
+.scn .n{font-family:"DM Sans";font-size:34px;font-weight:300;color:var(--accent);line-height:1}
+.scn .t{font-size:16px;font-weight:300;color:var(--body);line-height:1.3;max-width:900px}
+.scn .t b{font-weight:500;color:var(--ink)}
+.row{display:flex;gap:40px}
+.col{flex:1;min-width:0}
+.rowg{display:grid;grid-template-columns:repeat(var(--c,3),1fr);gap:28px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.card.tint{background:var(--accent-tint);border-color:transparent}
+ul.b{list-style:none;margin-top:14px}
+ul.b li{position:relative;padding-left:22px;margin:11px 0;font-size:16px;font-weight:300;line-height:1.35;color:var(--body);letter-spacing:-.023em}
+ul.b li b{font-weight:500;color:var(--ink)}
+ul.b li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;background:var(--accent);border-radius:1px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--accent-tint);color:var(--accent);font-weight:500;font-size:14px}
+.chip.ok{background:var(--ok-tint);color:var(--ok)}
+.chip.warn{background:var(--warn-tint);color:var(--warn)}
+.foot{position:absolute;left:72px;right:72px;bottom:18px;display:flex;justify-content:space-between;font-size:12px;font-weight:400;color:#aeb3c4}
+.foot .p{color:var(--nav)}
+.bar{position:absolute;left:0;bottom:0;height:3px;background:var(--accent);transition:width .2s}
+.shot{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px rgba(28,32,48,.08)}
+.shot img{display:block;width:100%;height:auto}
+.shot.dim img{filter:saturate(.5) brightness(.95)}
+.tag{position:absolute;top:10px;left:10px;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:500;background:#1a1a1a;color:#fff;z-index:3}
+.tag.v2{background:var(--accent)}
+.tag.now{background:var(--warn);color:#fff}
+.pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--warn);color:#fff;font-weight:500;font-size:13px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(217,83,79,.22);z-index:2;animation:pulse 2s infinite;font-family:"DM Sans"}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(217,83,79,.08)}}
+.issues{list-style:none}
+.issues li{display:flex;gap:14px;margin-bottom:16px}
+.issues .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--warn);color:#fff;font-weight:500;display:flex;align-items:center;justify-content:center;margin-top:2px;font-size:13px}
+.issues h3{font-size:16px;font-weight:500;color:var(--ink);line-height:1.2}
+.issues p{font-size:14px;font-weight:300;color:var(--body);line-height:1.3;margin-top:3px}
+.issues .ev{display:inline-block;margin-top:6px;font-size:12px;font-weight:500;color:var(--warn);background:var(--warn-tint);padding:3px 10px;border-radius:999px}
+.thumbs{display:flex;gap:8px;margin-top:12px}
+.thumb{width:72px;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;opacity:.55;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.thumb.sel{border-color:var(--accent);opacity:1}
+.thumb img{display:block;width:100%}
+.cap{margin-top:12px;font-size:14px;font-weight:300;color:var(--body);min-height:20px;letter-spacing:-.023em}
+.cap b{font-weight:500;color:var(--ink)}
+.phones{display:flex;gap:18px;align-items:flex-start;justify-content:center}
+.phone{text-align:center;font-size:13px;color:var(--mute);font-weight:300}
+.phone .shot{border-radius:22px;border:5px solid #1a1a1a;position:relative}
+.phone .lbl{margin-top:10px;font-weight:500;color:var(--nav);font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+.stat .big{font-family:"DM Sans";font-size:56px;font-weight:300;color:var(--accent);line-height:1;letter-spacing:-.04em}
+.stat .sm{font-size:13px;font-weight:300;color:var(--body);margin-top:8px;line-height:1.3}
+.steps{display:flex;gap:8px;margin-top:36px}
+.step{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:18px 16px}
+.step .no{font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.14em;text-transform:uppercase}
+.step h3{font-size:14px;font-weight:500;margin-top:6px;color:var(--ink)}
+.step p{font-size:12.5px;color:var(--body);margin-top:6px;line-height:1.3;font-weight:300}
+.cmp{margin-top:20px;max-width:1080px}
+.cmp .r{display:grid;grid-template-columns:230px 1fr 100px;gap:14px;align-items:center;margin:12px 0}
+.cmp .lab{font-size:15px;font-weight:500;color:var(--ink)}
+.cmp .tr{height:22px;position:relative;background:var(--soft);border-radius:4px;overflow:hidden}
+.cmp .b1,.cmp .b2{height:11px;display:flex;align-items:center;padding-left:8px;font-size:10px;color:#fff;font-weight:500;white-space:nowrap}
+.cmp .b1{background:#b5b9c6}
+.cmp .b2{background:var(--accent)}
+.cmp .d{font-weight:500;color:var(--ok);text-align:right;font-size:15px}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--mute);margin-top:8px;font-weight:300}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.divider{background:var(--bg)}
+.divider .big-ink{font-family:"DM Sans";font-weight:500;font-size:64px;line-height:1.04;letter-spacing:-.03em;color:var(--ink);margin-top:18px;max-width:1050px}
+.divider .big-ink em{color:var(--accent);font-style:normal}
+.hmw{margin-top:30px;font-size:22px;font-weight:300;line-height:1.35;padding:28px 32px;border-radius:14px;background:var(--accent-tint);max-width:1050px;color:var(--ink);letter-spacing:-.023em}
+.hmw b{font-weight:500;color:var(--accent)}
+.now-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.now-tile{position:relative;max-height:250px;display:flex;flex-direction:column}
+.now-tile .shot{border-radius:12px;border:4px solid #1a1a1a;height:200px}
+.now-tile .shot img{height:100%;width:auto;object-fit:cover;object-position:top}
+.now-tile .lab{margin-top:8px;font-size:11px;font-weight:300;color:var(--body);line-height:1.25}
+.now-tile .lab b{display:block;font-weight:500;color:var(--ink);font-size:12px}
+.tools{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.tool{padding:8px 16px;border-radius:999px;background:var(--soft);font-size:14px;font-weight:300;color:var(--nav);border:1px solid var(--line);display:inline-flex;align-items:center;gap:8px}
+.tool b{font-weight:500;color:var(--ink)}
+.tool .d{width:8px;height:8px;border-radius:50%;background:var(--warn)}
+#notes{position:fixed;left:0;right:0;bottom:0;background:#0b0d14;color:#e6e8f0;padding:14px 28px;font-size:15px;line-height:1.5;display:none;height:150px;overflow:auto;border-top:1px solid #2a2f40;z-index:50;font-weight:300}
+body.notes #notes{display:block}
+#help{position:fixed;right:14px;top:10px;font-size:11px;color:#6b7390;z-index:60;font-weight:300}
+@media print{
+  @page{size:1280px 720px;margin:0}
+  html,body{overflow:visible;background:#fff}
+  #viewport{position:static;display:block}
+  #stage{transform:none!important;height:auto}
+  .slide{position:relative;opacity:1;visibility:visible;page-break-after:always;height:720px}
+  #notes,#help,.bar{display:none!important}
+}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage"></div></div>
+<div id="notes"></div>
+<div id="help">← → navigate · N notes · F fullscreen</div>
+
+<script>
+const NAME = "Manasi Madan";
+const ROLE = "UX research · design · front-end";
+const A = "../public/assets/";
+
+const img = (p, cls="") => `<img src="${p.startsWith('current/')?p:A+p}" alt="" ${cls}>`;
+const pins = (arr=[]) => arr.map(p => `<div class="pin" style="left:${p.x}%;top:${p.y}%">${p.n}</div>`).join("");
+const gallery = (items, tag, tagCls="", w=580) => { w = items.length>1 ? Math.min(w,560) : w; return `
+  <div data-g>
+    <div class="shot" style="width:${w}px">
+      <span class="tag ${tagCls}">${tag}</span>
+      ${img(items[0].src,'data-main')}
+    </div>
+    ${items.length>1?`<div class="thumbs">${items.map((it,i)=>`<div class="thumb ${i?'':'sel'}" data-src="${(it.src.startsWith('current/')?it.src:A+it.src)}" data-cap="${it.cap.replace(/"/g,'&quot;')}">${img(it.src)}</div>`).join("")}</div>`:""}
+    <div class="cap" data-cap>${items[0].cap}</div>
+  </div>`; };
+const bullets = a => `<ul class="b">${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+const scn = (num, who, txt) => `<div class="scn"><div class="n">${num}.</div><div class="t"><b>${who}</b> ${txt}</div></div>`;
+
+const T = {
+  title: s => `
+    <div class="kicker"><span class="sq"></span>Case study · IIT Bombay</div>
+    <div style="display:flex;gap:60px;align-items:center;height:560px">
+      <div style="flex:1">
+        <div style="font-family:'DM Sans';font-weight:500;font-size:68px;line-height:1.04;letter-spacing:-.03em;color:var(--ink)">Placement Portal<br><span style="color:var(--teal)">from resume to offer.</span></div>
+        <p class="lead" style="margin-top:28px;max-width:720px">A redesign of the IIT Bombay placement portal for the two groups who live and run the drive — <b style="color:var(--ink);font-weight:500">students</b> and the <b style="color:var(--ink);font-weight:500">placement team</b>.</p>
+        <p class="body" style="margin-top:24px;color:var(--mute)">${NAME} · ${ROLE}</p>
+      </div>
+      <div style="width:220px">${img('f1/ipt-logo.png','style="width:220px"')}</div>
+    </div>`,
+
+  why: s => `
+    <div class="kicker"><span class="sq"></span>Why this topic</div>
+    <h1 class="ink">I was on the placement team last year.<br>I faced these issues first-hand.</h1>
+    <div class="row" style="margin-top:34px">
+      <div class="col card tint">
+        <h2 style="color:var(--teal-strong)">What I lived</h2>
+        ${bullets([
+          "Knowledge transfer happened over <b>phone calls</b>",
+          "Company contacts scraped from <b>old emails</b> into Excel",
+          "Resumes verified by hand — <b>PDF vs. every pointer</b>",
+          "Status in <b>WhatsApp, Excel, Google Chat and Gmail</b>"])}
+      </div>
+      <div class="col card">
+        <h2>Why it had to be researched</h2>
+        ${bullets([
+          "My experience is one data point, not evidence",
+          "The team has <b>many roles</b> — I saw one",
+          "<b>Students</b> see a different side entirely",
+          "I needed both perspectives before designing"])}
+      </div>
+    </div>`,
+
+  system: s => `
+    <div class="kicker"><span class="sq"></span>The system</div>
+    <h1>IITs run one of India's largest placement drives — and the portal holds both sides back.</h1>
+    <div class="row" style="margin-top:28px;align-items:center">
+      <div style="width:460px">${img('f2/image3.png','style="width:460px"')}</div>
+      <div class="col">
+        <h3 style="font-size:18px;margin-bottom:12px;color:var(--teal)">Three counterparts of one engine</h3>
+        ${bullets([
+          "<b>Students</b> — a missed update can mean a lost opportunity",
+          "<b>Placement team</b> — coordinators and faculty running the drive",
+          "<b>Hiring managers</b> — the companies on the other side"])}
+        <p class="body" style="margin-top:18px">Today's focus: <b style="color:var(--ink);font-weight:500">students and the team</b>.</p>
+      </div>
+    </div>`,
+
+  currentIntro: s => `
+    <div class="kicker"><span class="sq"></span>Current scenario</div>
+    <h1 class="ink">This is how the portal runs <span style="color:var(--teal)">right now.</span></h1>
+    <p class="lead">The screens on the next slide are the actual <b style="color:var(--ink);font-weight:500">placements.iitb.ac.in</b> portal in use this season — plus the WhatsApp group where most day-to-day coordination still happens.</p>
+    <div class="tools">
+      <span class="tool"><span class="d"></span><b>placements.iitb.ac.in</b> · portal</span>
+      <span class="tool"><span class="d"></span><b>WhatsApp</b> · updates &amp; announcements</span>
+      <span class="tool"><span class="d"></span><b>Blog</b> · shortlists</span>
+      <span class="tool"><span class="d"></span><b>Google Chat</b> · coordinator notes</span>
+      <span class="tool"><span class="d"></span><b>Excel</b> · company tracking</span>
+      <span class="tool"><span class="d"></span><b>Gmail</b> · outreach</span>
+    </div>
+    <p class="small" style="margin-top:28px;max-width:900px">A student doesn't open one place to apply and track. They open five.</p>`,
+
+  currentGrid: s => `
+    <div class="kicker"><span class="sq"></span>Current scenario · the real portal</div>
+    <h1 style="font-size:34px">Six surfaces for one application.</h1>
+    <p class="small" style="margin-top:8px;max-width:800px">placements.iitb.ac.in in use this season — plus the WhatsApp group where day-to-day coordination still happens.</p>
+    <div class="now-grid">
+      <div class="now-tile"><div class="shot"><span class="tag now">LIVE</span>${img('current/6-landing.jpg')}</div><div class="lab"><b>Landing</b>Four role buttons</div></div>
+      <div class="now-tile"><div class="shot"><span class="tag now">LIVE</span>${img('current/5-home.jpg')}</div><div class="lab"><b>Home</b>Payment status is the hero</div></div>
+      <div class="now-tile"><div class="shot"><span class="tag now">LIVE</span>${img('current/4-resumes.jpg')}</div><div class="lab"><b>Resumes</b>Guidelines in a PDF modal</div></div>
+      <div class="now-tile"><div class="shot"><span class="tag now">LIVE</span>${img('current/3-jobs-list.jpg')}</div><div class="lab"><b>Jobs</b>Dense list, Eligible chips</div></div>
+      <div class="now-tile"><div class="shot"><span class="tag now">LIVE</span>${img('current/2-view-job.jpg')}</div><div class="lab"><b>Sign JAF</b>Long modal + resume + SOP</div></div>
+      <div class="now-tile"><div class="shot"><span class="tag now">LIVE</span>${img('current/1-my-applications.jpg')}</div><div class="lab"><b>Applied</b>Flat linear progress per company</div></div>
+      <div class="now-tile"><div class="shot"><span class="tag now">LIVE</span>${img('current/8-whatsapp.jpg')}</div><div class="lab"><b>WhatsApp group</b>"React if issue resolved"</div></div>
+      <div class="now-tile"><div class="shot"><span class="tag now">LIVE</span>${img('current/7-google.jpg')}</div><div class="lab"><b>Google</b>How you find the portal URL</div></div>
+    </div>`,
+
+  currentTake: s => `
+    <div class="kicker"><span class="sq"></span>Current scenario · what this means</div>
+    <h1 class="ink">What the current portal leaves un-done.</h1>
+    <div class="rowg" style="--c:3;margin-top:30px">
+      <div class="card">
+        <h3 style="color:var(--teal);font-size:14px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">Students</h3>
+        <ul class="b" style="margin-top:12px">
+          <li>Verification guidelines open as a <b>separate PDF modal</b></li>
+          <li>Jobs list is text-dense — you <b>can't scan</b> stipend or rounds</li>
+          <li>Status is a <b>flat line of dots</b>, same per company</li>
+          <li>Updates arrive through <b>WhatsApp</b>, not the portal</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--teal);font-size:14px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">Team</h3>
+        <ul class="b" style="margin-top:12px">
+          <li>Companies tracked in a <b>shared Excel</b>, not the portal</li>
+          <li>Announcements on WhatsApp — <b>"react if resolved"</b></li>
+          <li>Verifiers log into a <b>separate role</b> to tick pointers</li>
+          <li>No place to store <b>conversation history</b> with a company</li>
+        </ul>
+      </div>
+      <div class="card tint">
+        <h3 style="color:var(--teal-strong);font-size:14px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">So</h3>
+        <ul class="b" style="margin-top:12px">
+          <li>Four role buttons isn't the answer — the <b>workflow</b> is</li>
+          <li>The redesign must <b>absorb WhatsApp &amp; Excel</b> back into the portal</li>
+          <li>Status needs to answer: <b>where am I right now?</b></li>
+        </ul>
+      </div>
+    </div>`,
+
+  approach: s => `
+    <div class="kicker"><span class="sq"></span>How I worked</div>
+    <h1>Same loop for both sides: research → scenario → prototype → test.</h1>
+    <div class="steps">
+      ${[["01","Survey","Quantify goals &amp; pain points"],
+         ["02","Deep-dive","Contextual inquiry (team)"],
+         ["03","Scenario","Find the key moments"],
+         ["04","HMW + personas","Capture the problem"],
+         ["05","AI prototypes","Test ideas quickly"],
+         ["06","V1 → test","Task-based sessions"],
+         ["07","V2 + experts","Fix &amp; validate"]]
+       .map(x=>`<div class="step"><div class="no">${x[0]}</div><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("")}
+    </div>
+    <p class="lead" style="margin-top:34px">Two scenarios per group. Each one runs <b style="color:var(--ink);font-weight:500">V1 → what broke → final</b>.</p>`,
+
+  divider: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <div class="big-ink">${s.title}</div>
+    ${s.lead?`<p class="lead" style="margin-top:22px">${s.lead}</p>`:""}
+    ${s.hmw?`<div class="hmw"><b>How might we</b> ${s.hmw}</div>`:""}`,
+
+  stats: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <h1>${s.title}</h1>
+    ${s.lead?`<p class="lead">${s.lead}</p>`:""}
+    <div class="stats" style="grid-template-columns:repeat(${s.items.length>4?4:s.items.length},1fr)">
+      ${s.items.map(i=>`<div class="stat"><div class="big">${i[0]}</div><div class="sm">${i[1]}</div></div>`).join("")}
+    </div>`,
+
+  picks: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <h1>${s.title}</h1>
+    <div class="rowg" style="--c:2;margin-top:34px">
+      ${s.items.map((i,n)=>`<div class="card tint"><div class="small" style="font-weight:500;color:var(--accent);letter-spacing:.14em;text-transform:uppercase">Scenario ${n+1}</div><h2 style="margin-top:6px;color:var(--ink)">${i[0]}</h2><p class="body" style="margin-top:12px;font-size:16px">${i[1]}</p></div>`).join("")}
+    </div>`,
+
+  v1: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <h1>${s.title}</h1>
+    ${scn("1", s.who, s.scn)}
+    <div class="row" style="margin-top:22px">
+      <div style="width:${s.w||560}px">${gallery(s.items,"V1","",s.w||560)}</div>
+      <div class="col"><h3 style="color:var(--accent);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">What V1 did</h3>${bullets(s.did)}</div>
+    </div>`,
+
+  v1phones: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <h1>${s.title}</h1>
+    ${scn("1", s.who, s.scn)}
+    <div class="row" style="margin-top:14px;align-items:center">
+      <div class="phones" style="width:600px">
+        ${s.items.map(i=>`<div class="phone" style="width:150px"><div class="shot ${s.dim?'dim':''}"><span class="tag" style="top:8px;left:8px;font-size:10px;padding:4px 9px">V1</span>${img(i.src)}</div><div class="lbl">${i.l}</div></div>`).join("")}
+      </div>
+      <div class="col"><h3 style="color:var(--accent);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">What V1 did</h3>${bullets(s.did)}</div>
+    </div>`,
+
+  issue: s => `
+    <div class="kicker" style="color:var(--warn)"><span class="sq" style="background:var(--warn)"></span>${s.k}</div>
+    <h1 style="color:var(--warn)">${s.title}</h1>
+    <div class="row" style="margin-top:22px">
+      <div style="width:${s.w||600}px"><div class="shot dim"><span class="tag" style="background:var(--warn)">V1 · what broke</span>${img(s.src)}${pins(s.pins)}</div></div>
+      <div class="col"><ul class="issues">
+        ${s.issues.map((i,n)=>`<li><div class="n">${n+1}</div><div><h3>${i[0]}</h3><p>${i[1]}</p>${i[2]?`<span class="ev">${i[2]}</span>`:""}</div></li>`).join("")}
+      </ul></div>
+    </div>`,
+
+  issuephones: s => `
+    <div class="kicker" style="color:var(--warn)"><span class="sq" style="background:var(--warn)"></span>${s.k}</div>
+    <h1 style="color:var(--warn)">${s.title}</h1>
+    <div class="row" style="margin-top:22px">
+      <div class="phones" style="width:530px">
+        ${s.items.map(i=>`<div class="phone" style="width:150px"><div class="shot dim">${i.n?`<div class="pin" style="top:12px;right:-4px;left:auto;margin:0">${i.n}</div>`:""}${img(i.src)}</div><div class="lbl" style="font-size:12px">${i.l}</div></div>`).join("")}
+      </div>
+      <div class="col"><ul class="issues">
+        ${s.issues.map((i,n)=>`<li><div class="n">${n+1}</div><div><h3>${i[0]}</h3><p>${i[1]}</p>${i[2]?`<span class="ev">${i[2]}</span>`:""}</div></li>`).join("")}
+      </ul></div>
+    </div>`,
+
+  final: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <h1>${s.title}</h1>
+    <div class="row" style="margin-top:20px">
+      <div style="width:${s.w||580}px">${gallery(s.items,"Final","v2",s.w||580)}</div>
+      <div class="col">
+        <h3 style="color:var(--accent);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">What changed</h3>
+        ${bullets(s.changes)}
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">${s.chips.map(c=>`<span class="chip ${c[1]||''}">${c[0]}</span>`).join("")}</div>
+      </div>
+    </div>`,
+
+  finalphone: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <h1>${s.title}</h1>
+    <div class="row" style="margin-top:14px">
+      <div style="width:230px"><div class="phone" style="width:230px"><div class="shot"><span class="tag v2" style="top:10px;left:10px;font-size:10px;padding:4px 10px">Final</span>${img(s.src)}</div></div></div>
+      <div class="col">
+        <h3 style="color:var(--accent);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">What changed</h3>
+        ${bullets(s.changes)}
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">${s.chips.map(c=>`<span class="chip ${c[1]||''}">${c[0]}</span>`).join("")}</div>
+      </div>
+    </div>`,
+
+  compare: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <h1>${s.title}</h1>
+    ${s.lead?`<p class="lead" style="font-size:18px">${s.lead}</p>`:""}
+    <div class="cmp">
+      ${s.rows.map(r=>`<div class="r"><div class="lab">${r[0]}</div>
+        <div class="tr"><div class="b1" style="width:${r[3]}%">${r[1]}</div><div class="b2" style="width:${r[4]}%">${r[2]}</div></div>
+        <div class="d">${r[5]}</div></div>`).join("")}
+      <div class="legend"><span><i style="background:#b5b9c6"></i>${s.l1}</span><span><i style="background:var(--accent)"></i>${s.l2}</span></div>
+    </div>`,
+
+  validate: s => `
+    <div class="kicker"><span class="sq"></span>${s.k}</div>
+    <h1>${s.title}</h1>
+    <div class="row" style="margin-top:22px">
+      <div class="col">
+        <div class="card tint">
+          <h3 style="font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">V1 test</h3>
+          ${bullets(["<b>10 coordinators</b>: 4 outreach, 3 resume verification, 3 schedule &amp; logistics","<b>4 live tasks</b>, 45-minute sessions + SUS questionnaire","<b>10 / 10</b> completed without help","Loved the live indicator when a teammate is on the same POC"])}
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3 style="color:var(--accent);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">Expert validation</h3>
+          ${bullets(["Managers + 7 team members reviewed V2","Easy to navigate — but <b>needs a phone version</b>","So the next build was mobile"])}
+        </div>
+      </div>
+      <div style="width:420px;display:flex;gap:12px;align-items:flex-start">
+        ${["tv2m/m-home.png","tv2m/m-funnel.png","tv2m/m-list.png"].map(p=>`<div class="shot" style="width:132px;border-radius:16px;border:5px solid #1a1a1a">${img(p)}</div>`).join("")}
+      </div>
+    </div>`,
+
+  close: s => `
+    <div class="kicker"><span class="sq"></span>Wrap-up</div>
+    <h1 class="ink">What I'd want you to remember.</h1>
+    <div class="rowg" style="--c:3;margin-top:30px">
+      <div class="card tint">
+        <h3 style="font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">Impact so far</h3>
+        ${bullets(["Students: find a JD <b>−55%</b> faster, submit resume <b>−51%</b>","Team: dialogue update <b>12 → 1.8 min</b>, resume check <b>8 → 2.2 min</b>","A working front end — hand-off is a codebase"])}</div>
+      <div class="card">
+        <h3 style="color:var(--teal);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">Next</h3>
+        ${bullets(["Re-run task sessions on V2 desktop + phone","Compare against V1 baselines","Extend the approach to hiring managers"])}</div>
+      <div class="card">
+        <h3 style="color:var(--teal);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase">What I learned</h3>
+        ${bullets(["First-hand experience gives the questions; research gives the proof","Prototype early with AI — but test with real users","Labels beat decoration"])}</div>
+    </div>
+    <p class="lead" style="margin-top:34px;font-size:28px;color:var(--ink);font-weight:500;letter-spacing:-.03em">Thank you — questions?</p>`
+};
+
+const D = [];
+const add = (type, data, notes, theme="") => D.push({type, data, notes, theme});
+
+add("title", {}, "Open with one line: redesigned the IIT Bombay placement portal for the two groups who live and run the drive. Structure: why, current scenario, students, team, with two scenarios each.");
+add("why", {}, "I was a coordinator last year. KT by phone, contacts in old emails, PDF-vs-pointer verification, status spread across five tools. But one person's experience is a hypothesis — so I went and measured it on both sides.");
+add("system", {}, "Set the stakes. One of India's biggest drives. Three counterparts. Today covers students and the team.");
+add("currentIntro", {}, "Tee up the current-state screens: this is the actual portal running at placements.iitb.ac.in this season. Mention the six tools it takes to do one application end-to-end: portal + WhatsApp + blog + Google Chat + Excel + Gmail. That fragmentation is the problem I'm solving.");
+add("currentGrid", {}, "Walk through the eight screens in 60 seconds. Landing has four role buttons. Home leads with a Payment status card. Resumes page keeps verification guidelines in a separate PDF modal. Jobs list is text-dense. Signing a JAF opens a long modal. My Applications shows a flat linear progress bar — same per company. The WhatsApp group says 'React if issue is resolved' — that's where coordination actually happens. Google is how students find the portal URL in the first place.");
+add("currentTake", {}, "Three columns. Student side: verification hidden in a PDF, jobs list not scannable, status is flat, updates on WhatsApp. Team side: Excel + WhatsApp + Gmail doing portal's job. So: one portal with four role buttons isn't the answer — the workflow is. Redesign absorbs WhatsApp and Excel work back into the portal.");
+add("approach", {}, "Explain the loop once. Survey for breadth, contextual inquiry for depth on team side, scenario to find key moments, HMW and personas, then rapid AI prototypes before locking IA. Then V1, test, V2, expert validation.");
+
+add("divider", {k:"Part 1 · Students", title:"Students: a missed update can cost an opportunity.",
+  lead:"Hundreds of companies, strict timelines — updates scattered across WhatsApp, the blog and the portal.",
+  hmw:"streamline resume submissions and application tracking so students can effortlessly discover opportunities via a single, proactive source of truth?"},
+  "Introduce the student side. The HMW is the whole project in one line.");
+add("stats", {k:"Student research", title:"A survey of 65 students told us where it hurts.",
+  items:[["65","students surveyed on resume submission, job application and communication"],["61%","manually check for updates instead of being notified"],["82%","want control over how their resume looks"],["32%","could not link a selected pointer to the resume preview"]]},
+  "Three numbers. 61% hunt for updates — that's the WhatsApp-blog-portal problem we saw. 82% want visual control. 32% failed to connect pointers to preview.");
+add("picks", {k:"Student scenarios", title:"Two scenarios — resume and job application.",
+  items:[["Resume submission","Preparing the resume, adding pointers, attaching proof to each — and getting them verified."],["Job application","Finding the JD, deciding whether to apply, and tracking the status afterwards."]]},
+  "Both from persona research. Resume is the heavier flow; job application is daily-use.");
+
+add("v1", {k:"Student · Resume · V1", title:"V1: submitting a resume with proof", who:"Malikaa",
+  scn:"a dual-degree student who wants her side projects and hackathons on her resume, with guidelines clear enough that her points get verified first time.",
+  items:[{src:"sv1/resume-preview.png",cap:"<b>Pointers + preview</b> — tick pointers, upload proof, see the template"},{src:"sv1/resume-cards.png",cap:"<b>Pointer cards</b> — each with its own proof button"}],
+  did:["Pointers as cards, each with a proof upload","Tick to include on the resume","Static resume template previewed on the right"]},
+  "Walk the screen. Pointers left, proof per card, static template right. Looks tidy — now why it failed.");
+add("issue", {k:"Student · Resume · what broke", title:"The preview didn't answer the student's real questions.",
+  src:"sv1/resume-preview.png",
+  pins:[{x:46,y:40,n:1},{x:48,y:26,n:2},{x:75,y:12,n:3}],
+  issues:[["Proof status felt ambiguous","Students couldn't tell if proof was submitted or what counted as adequate.","Guidelines inconsistent"],
+          ["Pointer ↔ resume link was invisible","A ticked pointer gave no sign of where it landed on the resume.","32% failed"],
+          ["No control over the look","Font, size, colour, spacing and layout were fixed.","82% wanted control"]]},
+  "Three pins. Proof state. Tick doesn't connect to preview — 32% failed. Static template — 82% wanted control.");
+add("final", {k:"Student · Resume · final", title:"Final: pointers on the left, a live and editable resume on the right.",
+  items:[{src:"sv2/app-list.png",cap:"<b>Pointer cards</b> grouped by section"},
+         {src:"sv2/app-form.png",cap:"<b>Add a pointer inline</b> — no separate page"},
+         {src:"sv2/app-visual.png",cap:"<b>Live preview</b> with colour, margin and layout controls"},
+         {src:"sv2/app-font.png",cap:"<b>Typography controls</b> — applied instantly"},
+         {src:"sv2/app-single.png",cap:"<b>Templates and section order</b> in one panel"}],
+  changes:["Preview updates as pointers change","Visual controls: font, colour, margin, layout","Proof is part of each pointer card","Multiple saved resumes, switchable from the top"],
+  chips:[["Submit resume with proof: 45s → 22s  (−51%)","ok"]]},
+  "Click thumbnails. Tie each back to a pin. Pilot: 45 → 22 seconds.");
+
+add("v1phones", {k:"Student · Job application · V1", title:"V1: applying to a job and checking the status", who:"Srishti",
+  scn:"has a packed schedule and barely goes online. She almost misses a WhatsApp update, then can't decide whether to apply from the JD alone.",
+  items:[{src:"sv1/home.png",l:"Home: applied list"},{src:"sv1/role.png",l:"Job description"},{src:"sv1/select.png",l:"Pick resume → apply"}],
+  did:["Home listed applied companies and their status","A JD page with the stipend and a Sign button","Apply = pick a resume, confirm"]},
+  "Srishti: busy, almost misses WhatsApp, logs in, can't tell from JD whether to apply, asks seniors, reads blogs, waits anxiously.");
+add("issuephones", {k:"Student · Job application · what broke", title:"Finding information and tracking status both took too long.",
+  items:[{src:"sv1/home.png",l:"Status was hard to find",n:2},{src:"sv1/role.png",l:"JD was hard to scan",n:1},{src:"sv1/select.png",l:"Updates lived elsewhere",n:3}],
+  issues:[["JD and stipend took 40 seconds to find","Students leaned on seniors, alumni and blogs to decide.","Time-trial: 40s"],
+          ["Checking status often failed","Participants failed or needed over 80s.","Failed / 80s+"],
+          ["Updates were fragmented","WhatsApp, blog and portal each held a piece.","61% hunt manually"]]},
+  "Three problems. JD 40s, status failed or 80s+, updates scattered. Insight: home should be where status lives.");
+add("finalphone", {k:"Student · Job application · final", title:"Final: home became the place to track status.",
+  src:"f2/image37.png",
+  changes:["Home leads with <b>Companies applied</b>, filtered by All / Shortlisted / Reject / Pending","Each card shows role type, date and <b>applicants per role</b>","<b>Your stats</b>: applied, shortlist rate, open roles","Blog and Calendar one tap away"],
+  chips:[["Find JD &amp; stipend: 40s → 18s  (−55%)","ok"],["Check status: failed → 37s","ok"]]},
+  "Home became the habitat for status. Applicants-per-role quietly answers 'should I apply'. Results: 40→18s, failed→37s.");
+add("compare", {k:"Student · proof", title:"Time trials: old portal vs. redesign", lead:"Participants thought aloud while I timed core student tasks.",
+  rows:[["Find JD &amp; stipend","40s","18s",100,45,"−55%"],["Check application status","80s+ / failed","37s",100,46,"failed → 37s"],["Submit resume with proof","45s","22s",100,49,"−51%"]],
+  l1:"Previous portal", l2:"Redesigned portal"},
+  "Pilot with time trials. Status task: old portal failed, so no clean percentage. Next: widen the sample.");
+
+add("divider", {k:"Part 2 · Placement team", title:"The placement team is the operational engine.",
+  lead:"Behind every smooth drive sits a massive operational load carried by student coordinators and faculty.",
+  hmw:"optimize team operations and data management so coordinators can effortlessly manage corporate outreach, track recruiter interactions, and maintain a single source of truth without operational burnout?"},
+  "The side I lived. PMs, ICs, APCs, CCs.", "team");
+add("stats", {k:"Team research", title:"Survey + contextual inquiry + affinity mapping.",
+  lead:"A survey gave the overall pain. Contextual inquiry gave the nuance — tools, roles, past automation, crunch periods, knowledge transfer.",
+  items:[["89%","called manual spreadsheet data entry impractical"],["100%","said manual tracking is unsustainable"],["78%","said handoffs are informal"],["83%","asked for automated email integration"],["61%","rely on emergency calls to former members"],["2 hrs","weekly spent searching for past contacts"],["45 min","daily updating status columns"]]},
+  "Survey = numbers. Contextual inquiry + affinity mapping = clusters.", "team");
+add("picks", {k:"Team scenarios", title:"Two scenarios — progress check and logging company data.",
+  items:[["Progress check","Where am I in the journey of conversion? — for Ravi, a new Internship Coordinator before a review meeting."],["Logging company data","Updating the dialogue with a company, without Excel, notes and WhatsApp."]]},
+  "Scenario character: Ravi, newly appointed IC. KT by calls, data scraped into Excel, 150 resumes to verify, review meeting where he copies WhatsApp notes into Excel.", "team");
+
+add("v1", {k:"Team · Progress check · V1", title:"V1: checking progress before the review meeting", who:"Ravi",
+  scn:"Internship Coordinator, due in a review meeting with managers. He needs to know where each company sits in the funnel.",
+  items:[{src:"tv2/v1-progress.png",cap:"<b>V1 home</b> — allotment strip, four rings, notes and a company grid"}],
+  did:["Allotment strip and four rings on the left","A grid of company logos on the right","Notes at the bottom"]},
+  "V1 home: rings, strip, grid.", "team");
+add("issue", {k:"Team · Progress check · what broke", title:"Testers looked at the shapes and couldn't read the numbers.",
+  src:"tv2/v1-progress.png",
+  pins:[{x:30,y:55,n:1},{x:80,y:21,n:2},{x:80,y:42,n:3}],
+  issues:[["Unlabeled metrics were confusing","People were drawn to the visual instead of the labels.","Usability test, V1"],
+          ["Labeled filters went unnoticed","Status chips above the grid were low-contrast.",""],
+          ["Company tiles felt like profiles","The grid read as people, not as a pipeline.",""]]},
+  "Three pins. Rings drew the eye but didn't communicate. Filters unnoticed. Tiles confused.", "team");
+add("final", {k:"Team · Progress check · final", title:"Final: labelled rings, an allotment funnel and a status-first list.",
+  items:[{src:"tv2/home.png",cap:"<b>Home</b> — labelled rings, allotment funnel, notes and company list"},{src:"tv2/status.png",cap:"<b>Status drill-down</b> — expand a company to see its latest notes"}],
+  changes:["Every ring is labelled and hover-readable","Allotment funnel shows where the batch sits","Company list is status-first with per-row actions","Notes stay on home — follow-ups don't leave the portal"],
+  chips:[["V1 test: 10 / 10 finished without help","ok"],["V2 retest planned",""]]},
+  "Labelled rings + allotment funnel answer 'where am I in the journey' in one glance. V2 retest = next.", "team");
+
+add("v1", {k:"Team · Logging company data · V1", title:"V1: logging a conversation with a company", who:"Ravi",
+  scn:"used notes and WhatsApp to keep a log, then copied everything into Excel — 45 minutes a day updating status columns.",
+  items:[{src:"tv2/v1-comments-a.png",cap:"<b>My Companies</b> — a list with status chips and quick actions"},{src:"tv2/v1-comments-b.png",cap:"<b>Expanded row</b> — history of past updates"}],
+  did:["My Companies list with status chips","Call, mail, edit and expand icons on every row","Edits opened in a modal"]},
+  "Legacy: 12 min to log one dialogue in spreadsheet. V1 moved it into the portal.", "team");
+add("issue", {k:"Team · Logging company data · what broke", title:"Logging a note still took too many clicks.",
+  src:"tv2/v1-comments-a.png",
+  pins:[{x:79,y:33,n:1},{x:66,y:33,n:2}],
+  issues:[["Editing notes was a two-click modal","Testers disliked opening a modal just to add one line.","Common complaint"],
+          ["Contacted vs. uncontacted took time to spot","Chips were small — scanning was slow.","Slowed the scan"]]},
+  "Two findings. Modal — disliked. Hard to spot uncontacted. Rebuilt around inline editing.", "team");
+add("final", {k:"Team · Logging company data · final", title:"Final: edit inline, log automatically, mail without leaving the portal.",
+  items:[{src:"tv2/co-all.png",cap:"<b>Companies</b> — Assigned / All / Self Allot tabs with status dots"},
+         {src:"tv2/co-pencil.png",cap:"<b>Pencil</b> opens the row inline — no modal"},
+         {src:"tv2/co-typed.png",cap:"<b>Type the update</b> and press enter"},
+         {src:"tv2/co-sent-log.png",cap:"<b>History</b> saved to the company's log"},
+         {src:"tv2/co-mail1.png",cap:"<b>Compose mail</b> inside the portal"}],
+  changes:["Inline edit replaces the modal","Updates become a timestamped log per company","Mail composer built in — sent mail logs automatically","Live indicator shows a teammate on the same POC"],
+  chips:[["Log a dialogue: 12 min → 1.8 min","ok"],["Company records: 45 min/day → automated","ok"]]},
+  "Click through. 12→1.8 is legacy vs V1. Live indicator came directly from my own experience of double-contacting.", "team");
+
+add("validate", {k:"Validation", title:"Tested with the team, then validated with managers."},
+  "10 coordinators, four live tasks, 45-min sessions. Managers' discussion produced the phone version.", "team");
+add("close", {}, "Three messages: impact, next, learning. Prepare for: Why survey before interviews? Why prototype before IA? How did AI help? Why keep human oversight?");
+
+const stage = document.getElementById("stage");
+const notesEl = document.getElementById("notes");
+D.forEach((s, i) => {
+  const el = document.createElement("section");
+  const isDiv = s.type === "divider";
+  el.className = `slide ${s.theme} ${isDiv?'divider':''}`;
+  el.innerHTML = T[s.type](s.data) +
+    `<div class="foot"><span class="p">Placement Portal · IIT Bombay</span><span>${i+1} / ${D.length}</span></div><div class="bar" style="width:${((i+1)/D.length)*100}%"></div>`;
+  stage.appendChild(el);
+});
+const slides = [...stage.children];
+let cur = 0;
+function go(n){
+  cur = Math.max(0, Math.min(slides.length-1, n));
+  slides.forEach((s,i)=>s.classList.toggle("on", i===cur));
+  notesEl.textContent = D[cur].notes || "";
+  history.replaceState(null,"","#"+(cur+1));
+}
+function fit(){
+  const h = innerHeight - (document.body.classList.contains("notes") ? 150 : 0);
+  const sc = Math.min(innerWidth/1280, h/720);
+  stage.style.transform = `scale(${sc})`;
+  document.getElementById("viewport").style.bottom = document.body.classList.contains("notes") ? "150px" : "0";
+}
+addEventListener("resize", fit);
+addEventListener("keydown", e => {
+  if (["ArrowRight","PageDown"," "].includes(e.key)) { e.preventDefault(); go(cur+1); }
+  else if (["ArrowLeft","PageUp"].includes(e.key)) { e.preventDefault(); go(cur-1); }
+  else if (e.key === "Home") go(0);
+  else if (e.key === "End") go(slides.length-1);
+  else if (e.key.toLowerCase() === "n") { document.body.classList.toggle("notes"); fit(); }
+  else if (e.key.toLowerCase() === "f") { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(()=>{}); }
+});
+document.addEventListener("click", e => {
+  const th = e.target.closest(".thumb");
+  if (th) {
+    const g = th.closest("[data-g]");
+    g.querySelector("[data-main]").src = th.dataset.src;
+    g.querySelector("[data-cap]").innerHTML = th.dataset.cap;
+    g.querySelectorAll(".thumb").forEach(t=>t.classList.toggle("sel", t===th));
+    return;
+  }
+  const r = innerWidth;
+  if (e.clientX > r*0.8) go(cur+1); else if (e.clientX < r*0.12) go(cur-1);
+});
+fit();
+go((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

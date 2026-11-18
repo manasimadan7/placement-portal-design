@@ -636,7 +636,8 @@ const JOURNEYS: Journey[] = [
   { key: 'resume', label: 'Verify a resume', nav: 'Resume', steps: ['Pick a student along the top.', 'Read a pointer, then its proof below.', 'Tap Approve, or Feedback to ask for more.'] },
   { key: 'self', label: 'Self allot', nav: 'Companies', tab: 'Self Allot', steps: ['Filter by category.', 'Expand a company to see roles and POCs.', 'Tag a teammate, or Claim it yourself.'] },
 ]
-const APP_SRC = `${import.meta.env.BASE_URL}portal-app/index.html?embed`
+/* VITE_PORTAL_SRC lets a build load the phone app from elsewhere (e.g. the public GitHub Pages copy) */
+const APP_SRC: string = import.meta.env.VITE_PORTAL_SRC || `${import.meta.env.BASE_URL}portal-app/index.html?embed`
 
 function Phone() {
   const frame = useRef<HTMLIFrameElement>(null)
@@ -700,6 +701,9 @@ function Phone() {
           <button type="button" className="journey-reset" onClick={reset}>
             Reset the phone
           </button>
+          <a className="journey-reset journey-open" href={APP_SRC} target="_blank" rel="noopener">
+            Open it full screen ↗
+          </a>
         </div>
         <div className="phone-device">
           <div className="phone-notch" aria-hidden="true" />
